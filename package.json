@@ -2,9 +2,9 @@
   "name": "3ds_hosted_fields",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "start"
+    "start": "node app.js "
   },
   "author": "",
   "license": "ISC",

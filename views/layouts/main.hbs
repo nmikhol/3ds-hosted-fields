@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ pageTitle }}</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <!-- <link rel='stylesheet' href='/css/styles.css' /> -->
+  </head>
+  <body>
+    <div class="container">
+      {{> navbar }}
+
+      <div class="main">
+        {{{ body }}}
+      </div>
+
+      {{> footer }}
+    </div>
+  </body>
+</html>
