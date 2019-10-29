@@ -19,8 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.listen(PORT, () => console.log(`App is up and running listening on port ${PORT}`))
 
 app.get('/', (req, res, next) => {
-  gateway.clientToken.generate({}, function (err, response) {
+  gateway.clientToken.generate({},(err, response) => {
     res.render('home', {clientToken: response.clientToken}, console.log(response.clientToken))
-})
-
-})
+    })
+  })
