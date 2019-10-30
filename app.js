@@ -20,6 +20,10 @@ app.listen(PORT, () => console.log(`App is up and running listening on port ${PO
 
 app.get('/', (req, res, next) => {
   gateway.clientToken.generate({},(err, response) => {
-    res.render('home', {clientToken: response.clientToken}, console.log(response.clientToken))
+    res.render('home', {clientToken: response.clientToken})
     })
   })
+
+app.post('/transaction', (req, res, next) => {
+  console.log("test")
+})
