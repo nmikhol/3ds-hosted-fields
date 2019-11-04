@@ -4,16 +4,16 @@
 
       <div class="form-row">
         <div class="form-group">
+          <label class="control-label" for="Amount">Amount</label>
+          <input name="amount" class="form-control" id="amount" placeholder="Amount">
+        </div>
+        <div class="form-group ml-3">
           <label class="control-label" for="First Name">First Name</label>
           <input name="firstName" class="form-control" id="first-name" placeholder="First Name">
         </div>
         <div class="form-group ml-3">
           <label class="control-label" for="Last Name">Last Name</label>
           <input name="lastName" type="name" class="form-control" id="last-name" placeholder="Last Name">
-        </div>
-        <div class="form-group ml-3">
-          <label class="control-label" for="email">Email address</label>
-          <input name="email" type="email" class="form-control" id="email" placeholder="email">
         </div>
       </div>
 
@@ -59,7 +59,6 @@
          console.error(clientErr);
          return;
        }
-
        braintree.hostedFields.create({
          client: clientInstance,
          styles: {
@@ -94,7 +93,6 @@
          }
 
          submit.removeAttribute('disabled');
-
          form.addEventListener('submit', function (event) {
           event.preventDefault();
 

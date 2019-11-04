@@ -24,22 +24,30 @@ app.get('/', (req, res, next) => {
     })
   })
 
+app.get('/history', (req, res, next) => {
+    res.render('history')
+  })
+
 app.post('/transaction', (req, res, next) => {
-  console.log("test")
   let paymentNonce = req.body.payment_method_nonce
   let firstName = req.body.firstName
   let lastName = req.body.lastName
   let email = req.body.email
   let postalCode = req.body.postalCode
+  let amount = req.body.amount
 
   let newTransaction = gateway.transaction.sale({
-    amount: '10.00',
+    amount: amount,
     paymentMethodNonce: paymentNonce,
     options: {
       submitForSettlement: true
     },
     billing: {
       postalCode: postalCode
+    },
+    customer: {
+      firstName:firstName,
+      lastName: lastName
     }
   }, function(error, result) {
     if (result.success || result.transaction) {

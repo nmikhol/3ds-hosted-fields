@@ -2,6 +2,9 @@
 <html>
   <head>
     <title>{{ pageTitle }}</title>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel='stylesheet' href='/css/styles.css'/>
@@ -12,7 +15,20 @@
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
       crossorigin="anonymous">
     </script>
+    <script> const firebaseConfig = {
+      apiKey: "AIzaSyAU0FdtiwsURRooLyIHUBt6hN6jjkAQWH4",
+      authDomain: "ds-hosted-fields-db.firebaseapp.com",
+      databaseURL: "https://ds-hosted-fields-db.firebaseio.com",
+      projectId: "ds-hosted-fields-db",
+      storageBucket: "ds-hosted-fields-db.appspot.com",
+      messagingSenderId: "870233554896",
+      appId: "1:870233554896:web:2f8c12ccbe79aec37cc3d5"
+    };
 
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const dbTxnHistory = firebase.firestore().collection('transactionHistory')
+</script>
   </head>
   <body>
     <div class="container">

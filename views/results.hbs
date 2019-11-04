@@ -7,6 +7,7 @@
         <th scope="col">ID</th>
         <th scope="col">Amount</th>
         <th scope="col">Status</th>
+        <th scope="col">Customer Name</th>
       </tr>
     </thead>
     <tbody>
@@ -14,7 +15,20 @@
         <th scope="row">{{transactionResponse.transaction.id}}</th>
         <td>{{transactionResponse.transaction.amount}}</td>
         <td>{{transactionResponse.transaction.status}}</td>
+        <td>{{transactionResponse.transaction.customer.firstName}} {{transactionResponse.transaction.customer.lastName}}</td>
       </tr>
     </tbody>
   </table>
 </p>
+
+<script>
+//###FIREBASE START####
+  dbTxnHistory.add({
+      id: `{{transactionResponse.transaction.id}}`,
+      amount: `{{transactionResponse.transaction.amount}}`,
+      firstName: `{{transactionResponse.transaction.customer.firstName}}`,
+      lastName: `{{transactionResponse.transaction.customer.lastName}}`,
+      status: `{{transactionResponse.transaction.status}}`
+    })
+
+</script>
