@@ -1,4 +1,4 @@
-<h1>Transaction History</h1>
+ <h1>Transaction History</h1>
 
 <p>
   <table id="txn-table" class="table table">
@@ -17,7 +17,9 @@
 </p>
 <script>
 
-  dbTxnHistory.get().then(function(querySnapshot) {
+  dbTxnHistory.orderBy('timestamp', 'desc').limit(10)
+    .get()
+    .then(function(querySnapshot) {
     querySnapshot.forEach((doc) => {
       const id = doc.data().id
       const amount = doc.data().amount
@@ -32,7 +34,8 @@
          <td>${amount}</td>
          <td>${status}</td>
          <td>${firstName} ${lastName}</td>
-         </tr>`
+        <td>
+        </tr>`
        )
     });
 });

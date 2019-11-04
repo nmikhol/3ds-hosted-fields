@@ -59,5 +59,19 @@ app.post('/transaction', (req, res, next) => {
       res.render('results');
       }
   });
-
 });
+
+/* app.post('/refund', (req, res, next) => {
+  let txnID = req.body.txn_id
+  console.log(txnID)
+  const newRefund = gateway.transaction.refund(txnID,
+    function (err, result) {
+      if (result.success || result.transaction) {
+        res.render('history', {refundResponse: result})
+      } else {
+      refundErrors = result.errors.deepErrors();
+      //req.flash('error', {msg:formatErrors(refundErrors)});
+      res.render('history');
+      }
+    });
+  });*/

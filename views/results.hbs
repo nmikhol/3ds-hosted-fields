@@ -28,7 +28,8 @@
       amount: `{{transactionResponse.transaction.amount}}`,
       firstName: `{{transactionResponse.transaction.customer.firstName}}`,
       lastName: `{{transactionResponse.transaction.customer.lastName}}`,
-      status: `{{transactionResponse.transaction.status}}`
+      status: `{{transactionResponse.transaction.status}}`,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
     })
 
 </script>
