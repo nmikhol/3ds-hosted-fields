@@ -4,7 +4,6 @@
   <table id="txn-table" class="table table">
     <thead class= "thead-dark">
       <tr>
-        <th scope="col">#</th>
         <th scope="col">ID</th>
         <th scope="col">Amount</th>
         <th scope="col">Status</th>
@@ -12,23 +11,30 @@
       </tr>
     </thead>
     <tbody>
-      <tr id="table-contents">
-        <th scope="row">1</th>
-      </tr>
+
     </tbody>
   </table>
 </p>
 <script>
 
-  dbTxnHistory.orderBy('timestamp', 'asc').onSnapshot((snapshot) => {
-    snapshot.forEach((doc) => {
+  dbTxnHistory.get().then(function(querySnapshot) {
+    querySnapshot.forEach((doc) => {
       const id = doc.data().id
       const amount = doc.data().amount
       const status = doc.data().status
       const firstName = doc.data().firstName
       const lastName = doc.data().lastName
-      console.log(amount)
-      })
-    })
+
+      $('#txn-table > tbody:last-child')
+       .append(
+        `<tr id="table-contents">
+         <th>${id}</th>
+         <td>${amount}</td>
+         <td>${status}</td>
+         <td>${firstName} ${lastName}</td>
+         </tr>`
+       )
+    });
+});
 
 </script>
