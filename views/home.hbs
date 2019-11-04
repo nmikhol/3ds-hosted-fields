@@ -1,6 +1,5 @@
 <h1>Create Transaction</h1>
 
-
     <form <!-- action="/transaction" method="post" id="cc-form" >
 
       <div class="form-row">
@@ -16,7 +15,7 @@
           <label class="control-label" for="email">Email address</label>
           <input name="email" type="email" class="form-control" id="email" placeholder="email">
         </div>
-    </div>
+      </div>
 
       <div class="form-group">
         <label class="control-label" for="cc-number">Credit Card Number</label>
@@ -27,43 +26,35 @@
           <label class="control-label" for="cvv">CVV</label>
           <div id="cvv" class="form-control"></div>
         </div>
-
         <div class="form-group ml-3" >
           <label class="control-label" for="expiration-date">Expiration Date</label>
           <div id="expiration-date" class="form-control" placeholder="04 / 2020"></div>
         </div>
-
         <div class="form-group ml-3">
           <label class="control-label" for="Postal Code">Postal Code</label>
           <input name="postalCode" class="form-control" id="postal-code" placeholder="Postal Code">
         </div>
-    </div>
+      </div>
 
-    <div>
-      <input id= 'nonce' name= 'payment_method_nonce' type='hidden' />
-    </div>
+      <div>
+        <input id= 'nonce' name= 'payment_method_nonce' type='hidden' />
+      </div>
 
       <div class="form-group">
-        <!-- <button type="submit" id="submit-btn" class="btn btn-primary" disabled >Pay</button> -->
-          <input type="submit" value="Pay" disabled />
+        <input type="submit" value="Pay" disabled />
       </div>
     </form>
-
-
 
 <script src="https://js.braintreegateway.com/web/3.55.0/js/client.min.js"></script>
 <script src="https://js.braintreegateway.com/web/3.55.0/js/hosted-fields.min.js"></script>
 <script>
-
-let clientToken = `{{clientToken}}`
-//console.log(clientToken)
-let form = document.querySelector('#cc-form');
-let hiddenNonceInput = document.querySelector('#nonce');
-let submit = document.querySelector('input[type="submit"]');
-
-     braintree.client.create({
-       authorization: clientToken
-     }, function (clientErr, clientInstance) {
+  let clientToken = `{{clientToken}}`
+  let form = document.querySelector('#cc-form');
+  let hiddenNonceInput = document.querySelector('#nonce');
+  let submit = document.querySelector('input[type="submit"]');
+    braintree.client.create({
+      authorization: clientToken
+      }, function (clientErr, clientInstance) {
        if (clientErr) {
          console.error(clientErr);
          return;
@@ -121,5 +112,4 @@ let submit = document.querySelector('input[type="submit"]');
          }, false);
        });
      });
-
 </script>
