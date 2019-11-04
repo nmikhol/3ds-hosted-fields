@@ -26,4 +26,30 @@ app.get('/', (req, res, next) => {
 
 app.post('/transaction', (req, res, next) => {
   console.log("test")
-})
+  let paymentNonce = req.body.payment_method_nonce
+  let firstName = req.body.firstName
+  let lastName = req.body.lastName
+  let email = req.body.email
+  let postalCode = req.body.postalCode
+
+  let newTransaction = gateway.transaction.sale({
+    amount: '10.00',
+    paymentMethodNonce: paymentNonce,
+    options: {
+      submitForSettlement: true
+    },
+    billing: {
+      postalCode: postalCode
+    }
+  }, function(error, result) {
+    if (result.success || result.transaction) {
+      res.render('results', {transactionResponse: result});
+
+    } else {
+      transactionErrors = result.errors.deepErrors();
+      req.flash('error', {msg: formatErrors(transactionErrors)});
+      res.render('results');
+      }
+  });
+
+});
